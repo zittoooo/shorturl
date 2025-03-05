@@ -1,18 +1,25 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:lg-test
-    username: lg
-    password: laundryGo!
-    hikari:
-      maximum-pool-size: 4
-  h2:
-    console:
-      enabled: true
-mybatis:
-  mapper-locations: mapper/*.xml
-  configuration:
-    map-underscore-to-camel-case: true
-logging:
-  level:
-    root: info
-    com.laundrygo.shorturl.repository: debug
+    url: jdbc:h2:tcp://localhost/~/shorturl
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+    initialization-mode: always
+  jpa:
+    hibernate:
+      ddl-auto: create
+      properties:
+        hibernate:
+          format_sql: true
+    defer-datasource-initialization: true
+
+#  sql:
+#    init:
+#      mode=always
+
+logging.level:
+  org.hibernate.SQL: debug
+  #level:
+    #root: info
+    #com.laundrygo.shorturl.repository: debug
+

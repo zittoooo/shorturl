@@ -1,7 +1,7 @@
 package com.laundrygo.shorturl.service;
 
 import com.laundrygo.shorturl.domain.Member;
-import com.laundrygo.shorturl.repository.MemberRepository;
+import com.laundrygo.shorturl.repository.JpaMemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class MemberService {
-    private final MemberRepository memberRepository;
+    private final JpaMemberRepository memberRepository;
 
     public List<Member> findAll() {
         return memberRepository.findAll();
