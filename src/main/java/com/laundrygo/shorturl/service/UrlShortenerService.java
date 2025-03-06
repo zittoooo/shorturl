@@ -14,31 +14,29 @@ public class UrlShortenerService {
     private final UrlRepository urlRepository;
 
     public String shortenUrl(String originUrl) {
-
-        if (urlRepository.findByOriginUrl(originUrl).isPresent()) {
-            Url findUrl = urlRepository.findByOriginUrl(originUrl).get();
+        Optional<Url> existUrl = urlRepository.findByOriginUrl(originUrl);
+        if (existUrl.isPresent()) {
+            Url findUrl = existUrl.get();
             findUrl.setCount(findUrl.getCount()+1);
-            urlRepository.save(findUrl);
+            urlRepository.save(findUrl); // 업데이트 저장
             return findUrl.getShortUrl();
-        } else {
-            Url url = new Url();
-            url.setOriginUrl(originUrl);
-            url.setCount(1);
-            urlRepository.save(url);
-            String encodeUrl = Util.encoding(url.getId());
-            url.setShortUrl(encodeUrl);
-            urlRepository.save(url);
-            return url.getShortUrl();
         }
+        // 새로운 Url 저장
+        Url url = new Url();
+        url.setOriginUrl(originUrl);
+        url.setCount(1);
+        urlRepository.save(url); // id 생성을 위한 저장
+        // id를 기반으로 short url 생성 후 저장
+        String encodeUrl = Util.encoding(url.getId());
+        url.setShortUrl(encodeUrl);
+        urlRepository.save(url);
+
+        return encodeUrl;
     }
 
-
     public String decodeShortUrl(String shortUrl) {
-        //Optional<Url> findUrl = urlRepository.findByShortUrl(shortUrl);
-        //if (findUrl.isPresent()) {
-            int id = Util.decode(shortUrl);
-            return urlRepository.findById(id).get().getOriginUrl();
-        //}
-        //return "Not Found";
+        return urlRepository.findByShortUrl(shortUrl)
+                .map(Url::getOriginUrl)
+                .orElse("Not Found");
     }
 }

@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS URL;
 
 CREATE TABLE URL (
     id integer not null,
-    origin_url VARCHAR(2048) not null unique,
+    origin_url VARCHAR(10000) not null unique,
     count integer default 0,
     short_url VARCHAR(8) unique,
     primary key (id)
