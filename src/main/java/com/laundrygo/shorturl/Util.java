@@ -6,8 +6,6 @@ import java.security.MessageDigest;
 
 public class Util {
     private static final String BASE62 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-
     // 동일한 oriUrl 요청 시 동일한 shortUrl이 응답됨.
     // 해시 기반이므로 충돌 가능성이 매우 낮음.
     public static String encoding(String originUrl) {
