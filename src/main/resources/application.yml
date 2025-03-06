@@ -1,6 +1,7 @@
 spring:
   datasource:
-    url: jdbc:h2:tcp://localhost/~/shorturl
+    #url: jdbc:h2:tcp://localhost/~/shorturl
+    url: 'jdbc:h2:mem:test' # H2 DB In-Memory Mode
     username: sa
     password:
     driver-class-name: org.h2.Driver
@@ -10,16 +11,12 @@ spring:
       ddl-auto: create
       properties:
         hibernate:
-          format_sql: true
+          format_sql: true # 쿼리 로그 포맷 (정렬)
     defer-datasource-initialization: true
-
-#  sql:
-#    init:
-#      mode=always
 
 logging.level:
   org.hibernate.SQL: debug
-  #level:
-    #root: info
-    #com.laundrygo.shorturl.repository: debug
+  level:
+    root: info
+    com.laundrygo.shorturl.repository: debug
 
