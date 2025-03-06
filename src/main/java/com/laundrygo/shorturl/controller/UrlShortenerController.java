@@ -18,5 +18,12 @@ public class UrlShortenerController {
         return ResponseEntity.ok(shortUrl);
     }
 
-
+    @GetMapping("/{shortUrl}")
+    public ResponseEntity<String> decodeShortUrl(@PathVariable String shortUrl) {
+        String originalUrl = urlShortenerService.decodeShortUrl(shortUrl);
+        if ("Not Found".equals(originalUrl)) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(originalUrl);
+    }
 }
