@@ -1,5 +1,6 @@
 package com.laundrygo.shorturl.controller;
 
+import com.laundrygo.shorturl.Util;
 import com.laundrygo.shorturl.domain.UrlDto;
 import com.laundrygo.shorturl.service.UrlShortenerService;
 import io.swagger.annotations.ApiOperation;
@@ -19,6 +20,8 @@ public class UrlShortenerController {
     @ApiOperation(value = "origin url 입력 -> short url 생성", notes = "origin url의 id로 base62 인코딩해서 short url을 생성한다.")
     @PostMapping("/shorten")
     public ResponseEntity<String> shortenUrl(@RequestParam String originUrl) {
+        if (!Util.isValidUrl(originUrl))
+            return ResponseEntity.badRequest().body("올바른 url을 입력해 주세요.");
         String shortUrl = urlShortenerService.shortenUrl(originUrl);
         return ResponseEntity.ok(shortUrl);
     }

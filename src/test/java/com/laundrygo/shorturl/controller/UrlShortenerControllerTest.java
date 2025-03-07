@@ -24,7 +24,7 @@ public class UrlShortenerControllerTest {
     private UrlShortenerService urlShortenerService;
 
     @Test
-    void testShortenAndRetrieveUrl() throws Exception {
+    void testShortenAndDecodeUrl() throws Exception {
         // 테스트 1번
         MvcResult result = mockMvc.perform(post("/url/shorten?originUrl=https://www.laundrygo.com/"))
                 .andExpect(status().isOk())
@@ -52,5 +52,13 @@ public class UrlShortenerControllerTest {
         originUrl = result.getResponse().getContentAsString();
         Assertions.assertEquals("https://example.com", originUrl);
     }
+
+    @Test
+    void urlValidation() throws Exception {
+//        MvcResult result = mockMvc.perform(post("/url/shorten?originUrl=abcd.laundrygo.com/"))
+//                .andExpect(status().isBadRequest())
+//                .andReturn();
+    }
+
 
 }
