@@ -1,8 +1,18 @@
 package com.laundrygo.shorturl;
 
+import java.util.regex.Pattern;
+
 public class Util {
     private static final String BASE62 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     private static final int BASE = BASE62.length();
+
+    private static final String URL_REGEX =
+            "^(https?|ftp)://[\\w.-]+(?:\\.[\\w\\.-]+)+[/#?]?.*$";
+    private static final Pattern URL_PATTERN = Pattern.compile(URL_REGEX);
+
+    public static boolean isValidUrl(String url) {
+        return URL_PATTERN.matcher(url).matches();
+    }
 
     public static String encoding(Integer id) {
         StringBuilder sb = new StringBuilder();
