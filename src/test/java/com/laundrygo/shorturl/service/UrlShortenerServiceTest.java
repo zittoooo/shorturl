@@ -13,9 +13,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class UrlShortenerServiceTest {
     @Autowired
-    private UrlRepository urlRepository;  // 가짜 데이터 저장소
+    private UrlRepository urlRepository;
     @Autowired
-    private UrlShortenerService urlShortenerService;  // 테스트할 서비스
+    private UrlShortenerService urlShortenerService;
     private final String originUrl = "https://naver.com";
 
     @Test

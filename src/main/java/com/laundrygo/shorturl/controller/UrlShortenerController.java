@@ -1,11 +1,13 @@
 package com.laundrygo.shorturl.controller;
 
+import com.laundrygo.shorturl.domain.UrlDto;
 import com.laundrygo.shorturl.service.UrlShortenerService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -30,5 +32,10 @@ public class UrlShortenerController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("short url을 찾을 수 없습니다.");
         }
         return ResponseEntity.ok(originalUrl);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<UrlDto>> getUrls() {
+        return ResponseEntity.ok(urlShortenerService.getUrls());
     }
 }

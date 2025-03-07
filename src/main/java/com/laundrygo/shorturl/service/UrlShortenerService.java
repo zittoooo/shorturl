@@ -2,11 +2,13 @@ package com.laundrygo.shorturl.service;
 
 import com.laundrygo.shorturl.Util;
 import com.laundrygo.shorturl.domain.Url;
+import com.laundrygo.shorturl.domain.UrlDto;
 import com.laundrygo.shorturl.repository.UrlRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -38,5 +40,14 @@ public class UrlShortenerService {
         return urlRepository.findByShortUrl(shortUrl)
                 .map(Url::getOriginUrl)
                 .orElse("Not Found");
+    }
+
+    public List<UrlDto> getUrls() {
+
+        List<Url> urls = urlRepository.findAll();
+        return urls.stream()
+                .map(url -> new UrlDto(url.getOriginUrl(), url.getShortUrl(), url.getCount()))
+                .collect(Collectors.toList());
+
     }
 }
