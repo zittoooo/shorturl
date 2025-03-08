@@ -17,8 +17,23 @@
 | **GET**    | `/url/{shortUrl}` | shortUrl을 요청 받아 원래 oriUrl을 응답한다. | http://localhost:8080/url/{shortUrl}                |
 | **GET**    | `/url`            | 등록된 oriUrl, shortUrl, 요청 수를 조회 할 수 있다.| http://localhost:8080/url                           |
 
+2. 결과 예시
+   * 올바르게 입력했을 때
+     ![img.png](img.png)
+     ![img_2.png](img_2.png)
 
-2. 접근과정
+
+![img_1.png](img_1.png)
+![img_3.png](img_3.png)
+
+![img_4.png](img_4.png)
+
+   * 올바르게 입력하지 않았을 때    
+![img_5.png](img_5.png)
+![img_7.png](img_7.png)
+    
+
+3. 접근과정
 
 동일한 oriUrl 요청에 대해 항상 동일한 shortUrl을 반환하고, 중복을 방지하기 위해 해시를 사용하고 Base62 인코딩 방식도 고려했습니다.
 
