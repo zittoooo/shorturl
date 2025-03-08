@@ -1,6 +1,5 @@
 package com.laundrygo.shorturl.controller;
 
-import com.laundrygo.shorturl.service.UrlShortenerService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +18,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class UrlShortenerControllerTest {
     @Autowired
     private MockMvc mockMvc;
-
-    @Autowired
-    private UrlShortenerService urlShortenerService;
 
     @Test
     void testShortenAndDecodeUrl() throws Exception {
@@ -52,13 +48,5 @@ public class UrlShortenerControllerTest {
         originUrl = result.getResponse().getContentAsString();
         Assertions.assertEquals("https://example.com", originUrl);
     }
-
-    @Test
-    void urlValidation() throws Exception {
-//        MvcResult result = mockMvc.perform(post("/url/shorten?originUrl=abcd.laundrygo.com/"))
-//                .andExpect(status().isBadRequest())
-//                .andReturn();
-    }
-
 
 }

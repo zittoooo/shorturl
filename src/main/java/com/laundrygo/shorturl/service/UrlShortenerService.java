@@ -37,7 +37,9 @@ public class UrlShortenerService {
     }
 
     public String decodeShortUrl(String shortUrl) {
-        return urlRepository.findByShortUrl(shortUrl)
+        int id = Util.decode(shortUrl);
+
+        return urlRepository.findById(id)
                 .map(Url::getOriginUrl)
                 .orElse("Not Found");
     }
