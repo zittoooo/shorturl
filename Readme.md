@@ -19,18 +19,18 @@
 
 2. 결과 예시
    * 올바르게 입력했을 때
-     ![img.png](img.png)
-     ![img_2.png](img_2.png)
+     ![img.png](image/img.png)
+     ![img_2.png](image/img_2.png)
 
 
-![img_1.png](img_1.png)
-![img_3.png](img_3.png)
+![img_1.png](image/img_1.png)
+![img_3.png](image/img_3.png)
 
-![img_4.png](img_4.png)
+![img_4.png](image/img_4.png)
 
    * 올바르게 입력하지 않았을 때    
-![img_5.png](img_5.png)
-![img_7.png](img_7.png)
+![img_5.png](image/img_5.png)
+![img_7.png](image/img_7.png)
     
 
 3. 접근과정
